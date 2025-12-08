@@ -243,14 +243,6 @@ public class AnalyseurLexical {
                     }
                     caractere = lireCaractere(); // avancer
                 }
-                // Reconnaissance du Tag de Fermeture PHP (?>)
-
-                else if (caractere == '?' && regarderSuivant() == '>') {
-                    ajouterToken(TokenType.TAG_FERMETURE_PHP, "?>");
-                    pos = pos + 2;
-                    caractere = lireCaractere(); // avancer
-                }
-
                 // Chaînes de caractères
                 else if (caractere == '"' || caractere == '\'') {
                     lireChaine();
@@ -420,4 +412,5 @@ public class AnalyseurLexical {
     public List<String> getErrors() {
         return errors;
     }
+
 }
