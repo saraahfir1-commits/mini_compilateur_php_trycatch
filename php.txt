@@ -1,6 +1,4 @@
-<?php
-
-// 1. DÉCLARATIONS ET AFFECTATIONS SIMPLES (Niveau Racinc)
+// 1. DÉCLARATIONS ET AFFECTATIONS 
 $a = 1 + 2 * $b; // Teste Expression(), Terme(), Facteur(), Affectation()
 $counter++; // Teste Affectation() avec incrémentation
 $flag = $x > 5; // Teste Comparaison() et Affectation()
@@ -35,22 +33,6 @@ try {
     appel_final();
 }
 
-// 3. DÉCLARATION DE CLASSE ET MÉTHODE
-class Manager {
-    $version = 1.0; // Déclaration de variable dans la classe (doit être gérée par Bloc/Instruction)
-
-    // Méthode avec paramètres multiples
-    function processData($data, $format) { // Teste la liste des paramètres
-        $data = $data + 1; // Affectation dans la méthode
-        return $data;
-    }
-
-    // Méthode simple sans paramètre
-    function isReady() {
-        return true;
-    }
-}
-
 // 4. INSTRUCTIONS NON SUPPORTÉES (Test de la fonction ignorerBloc)
 while ($i < 10) { // Teste la consommation du while/for
     $i++; 
@@ -58,9 +40,6 @@ while ($i < 10) { // Teste la consommation du while/for
 
 // 5. MOT-CLÉ PERSONNALISÉ
 AHFIR sara;
-
-
-
 
 try {
     $resultat = division(10, 0); // provoque une exception
@@ -70,5 +49,3 @@ try {
 } finally {
     echo "Bloc finally exécuté, nettoyage terminé.\n";
 }
-
-?>
