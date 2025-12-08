@@ -34,11 +34,7 @@ public class AnalyseurSyntaxique {
 
             TokenType typeCourant = tokens.get(i).type;
 
-            // Si S() tombe sur une ACCOLADE_FERMANTE non attendue (non consommée par
-            // Bloc()),
-            // cela signifie qu'une accolade est mal placée
-            // On la consomme et on signale un avertissement pour ne pas boucler ou bloquer
-            // Z().
+           
             if (tokens.get(i).type == TokenType.ACCOLADE_FERMANTE) {
                 System.out.println("AVERTISSEMENT: Accolade fermante '}' inattendue trouvée ");
                 i++;
@@ -68,7 +64,7 @@ public class AnalyseurSyntaxique {
 
     private Token getErreurToken() {
         if (tokens.isEmpty()) {
-            return null; // cas extrême : liste vide
+            return null; // liste vide
         }
         if (i < tokens.size()) {
             return tokens.get(i); // token courant
@@ -89,7 +85,7 @@ public class AnalyseurSyntaxique {
                 "    Attendu      : " + message;
 
         erreurs.add(msg);
-        System.out.println(msg); // affichage immédiat
+        System.out.println(msg); // affichage 
     }
 
     public void DeclarationClasse() {
@@ -175,7 +171,7 @@ public class AnalyseurSyntaxique {
         if (i < tokens.size() && tokens.get(i).type == TokenType.PLUS) {
             i++; // Consomme '+'
             Terme(); // Analyse le Terme suivant
-            ExpressionPrime(); // Récursion pour continuer
+            ExpressionPrime(); 
             return;
         }
 
@@ -183,7 +179,7 @@ public class AnalyseurSyntaxique {
         if (i < tokens.size() && tokens.get(i).type == TokenType.MOINS) {
             i++; // Consomme '-'
             Terme(); // Analyse le Terme suivant
-            ExpressionPrime(); // Récursion pour continuer
+            ExpressionPrime(); 
             return;
         }
 
@@ -251,14 +247,14 @@ public class AnalyseurSyntaxique {
         if (i < tokens.size() && tokens.get(i).type == TokenType.FOIS) {
             i++; // Consomme '*'
             Facteur();
-            TermePrime(); // Récursion
+            TermePrime(); 
             return;
         }
 
         if (i < tokens.size() && tokens.get(i).type == TokenType.DIVISE) {
             i++; // Consomme '/'
             Facteur();
-            TermePrime(); // Récursion
+            TermePrime();
             return;
         }
         // Cas epsilon (ϵ) : rien à faire
@@ -280,12 +276,9 @@ public class AnalyseurSyntaxique {
 
         // Réintégration de la gestion du ou des CATCH (maintenant optionnelle)
         while (i < tokens.size() && tokens.get(i).type == TokenType.CATCH) {
-            // Logique d'analyse du catch
+         
             verifier(TokenType.CATCH);
-            // ... (parenthèse, type, variable, parenthèse fermante) ...
-            // NOTE: Utilisez IDENTIFIANT si le type d'exception est un identifiant,
-            // et VARIABLE si vous utilisez le format PHP ($variable).
-            // Exemple avec IDENTIFIANT et VARIABLE :
+            
             verifier(TokenType.PARENTHESE_OUVRANTE);
             verifier(TokenType.IDENTIFIANT); // Type (ex: Exception)
             verifier(TokenType.VARIABLE); // Variable (ex: $e)
@@ -303,7 +296,7 @@ public class AnalyseurSyntaxique {
             finallyTrouve = true;
         }
 
-        // VÉRIFICATION D'ERREUR (Contrainte sémantique/syntaxique)
+        // VÉRIFICATION D'ERREUR 
         // Il faut au moins un catch OU un finally
         if (!catchTrouve && !finallyTrouve) {
             erreur("Un bloc 'try' doit être suivi d'au moins un 'catch' ou un 'finally'.");
@@ -346,7 +339,7 @@ public class AnalyseurSyntaxique {
         } else if (typeCourant == TokenType.FUNCTION) {
             DeclarationMethode();
         } else if (typeCourant == TokenType.VARIABLE) {
-            DeclarationVariable(); // (Cette méthode gère déjà son propre ';')
+            DeclarationVariable(); 
         } else if (typeCourant == TokenType.IDENTIFIANT) {
 
             Comparaison(); // Analyse l'expression ou la comparaison
@@ -357,7 +350,7 @@ public class AnalyseurSyntaxique {
             }
 
         } else {
-            // 🔹 Tout le reste est ignoré
+            //  Tout le reste est ignoré
             ignorerBloc();
         }
     }
@@ -423,3 +416,4 @@ public class AnalyseurSyntaxique {
     }
 
 }
+
