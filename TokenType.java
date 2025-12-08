@@ -24,10 +24,9 @@
         // Opérateurs logiques
         ET_LOGIQUE, OU_LOGIQUE, NOT,
 
-        // Fin
-        TAG_OUVERTURE_PHP, 
-    TAG_FERMETURE_PHP, 
+        // Fi
         FIN,
         // erreur
         ERREUR
     }
+
