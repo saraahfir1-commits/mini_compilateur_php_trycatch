@@ -1,0 +1,74 @@
+<?php
+
+// 1. DÉCLARATIONS ET AFFECTATIONS SIMPLES (Niveau Racinc)
+$a = 1 + 2 * $b; // Teste Expression(), Terme(), Facteur(), Affectation()
+$counter++; // Teste Affectation() avec incrémentation
+$flag = $x > 5; // Teste Comparaison() et Affectation()
+
+// 2. BLOC TRY/CATCH/FINALLY COMPLEXE ET IMBRIQUÉ
+try {
+    // Instruction reconnue (Affectation)
+    $valeur = $a / 0;
+
+    // Instruction qui sera ignorée dans le bloc (If)
+    if ($valeur < 10) { 
+        appel_ignore(); 
+    } 
+
+} catch (DivisionByZero $ex) { // Teste la structure Catch avec un identifiant de type
+    $resultat = 0; // Instruction reconnue (Affectation)
+    
+    // Autre instruction simple ignorée (Echo)
+    echo "Erreur attrapée";
+
+    // Un autre bloc Try/Catch imbriqué !
+    try {
+        $log = "ok";
+    } catch (Exception $e) {
+        // Corps de catch vide (pour tester la consommation de bloc vide)
+    }
+} finally {
+    // Instruction reconnue (Affectation/Expression)
+    $a = $b * 10 - 5; 
+    
+    // Instruction non reconnue (appel de fonction)
+    appel_final();
+}
+
+// 3. DÉCLARATION DE CLASSE ET MÉTHODE
+class Manager {
+    $version = 1.0; // Déclaration de variable dans la classe (doit être gérée par Bloc/Instruction)
+
+    // Méthode avec paramètres multiples
+    function processData($data, $format) { // Teste la liste des paramètres
+        $data = $data + 1; // Affectation dans la méthode
+        return $data;
+    }
+
+    // Méthode simple sans paramètre
+    function isReady() {
+        return true;
+    }
+}
+
+// 4. INSTRUCTIONS NON SUPPORTÉES (Test de la fonction ignorerBloc)
+while ($i < 10) { // Teste la consommation du while/for
+    $i++; 
+} 
+
+// 5. MOT-CLÉ PERSONNALISÉ
+AHFIR sara;
+
+
+
+
+try {
+    $resultat = division(10, 0); // provoque une exception
+    echo "Résultat: " . $resultat . "\n";
+} catch (Exception $e) {
+    echo "Erreur attrapée: " . $e->getMessage() . "\n";
+} finally {
+    echo "Bloc finally exécuté, nettoyage terminé.\n";
+}
+
+?>
