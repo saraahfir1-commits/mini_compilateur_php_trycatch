@@ -17,7 +17,7 @@ public class InterfacePHP extends JFrame {
         setTitle("Compilateur PHP (Try-Catch)");
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // Centrer à l'écran
+        setLocationRelativeTo(null); 
         setLayout(new BorderLayout());
 
         // --- HAUT : Titre ---
@@ -104,13 +104,13 @@ public class InterfacePHP extends JFrame {
         // ==========================================
         log.append("--- 1. ANALYSE LEXICALE ---\n");
         AnalyseurLexical lexer = new AnalyseurLexical(code);
-        List<Token> tokens = lexer.genererTokens(); // ⚠️ méthode correcte
+        List<Token> tokens = lexer.genererTokens(); 
 
         for (Token t : tokens) {
             log.append(t.toString()).append("\n");
         }
 
-        List<String> errLex = lexer.getErrors(); // ⚠️ méthode correcte
+        List<String> errLex = lexer.getErrors(); 
         if (!errLex.isEmpty()) {
             log.append("\n❌ ÉCHEC LEXICAL :\n");
             for (String err : errLex) {
@@ -131,7 +131,7 @@ public class InterfacePHP extends JFrame {
         AnalyseurSyntaxique parser = new AnalyseurSyntaxique(tokens);
         parser.Z();
 
-        List<String> errSyn = parser.getErreurs(); // ⚠️ méthode correcte
+        List<String> errSyn = parser.getErreurs(); 
         if (errSyn.isEmpty()) {
             log.append("✅ ANALYSE RÉUSSIE !\n");
             log.append("Structure Try-Catch correcte.");
@@ -156,3 +156,4 @@ public class InterfacePHP extends JFrame {
         });
     }
 }
+
